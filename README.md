@@ -1,5 +1,7 @@
 # DING!
 
+<img style="image-rendering: pixelated" src="logo.png" width="64px" height="64px"/>
+
 Lightweight API for scheduling tasks based on [chime](https://github.com/jarohen/chime).
 
 The idea here is the same as the original library.
