@@ -179,6 +179,6 @@ public final class Schedule {
 
     @Override
     public String toString() {
-        return "Schedule" + this.times;
+        return this.times.toString();
     }
 }

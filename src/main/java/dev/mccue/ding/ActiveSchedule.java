@@ -2,6 +2,7 @@ package dev.mccue.ding;
 
 import java.util.concurrent.TimeUnit;
 
+/// A handle to a running schedule.
 public final class ActiveSchedule implements AutoCloseable {
     final InterruptableRunnable close;
     final Promise promise;

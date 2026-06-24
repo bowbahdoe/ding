@@ -2,6 +2,7 @@ package dev.mccue.ding;
 
 import java.time.Instant;
 
+/// A task that is run at a scheduled time.
 @FunctionalInterface
 public interface ScheduledTask {
     void run(Instant time) throws Exception;
