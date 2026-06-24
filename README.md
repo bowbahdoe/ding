@@ -7,6 +7,14 @@ The idea here is the same as the original library.
 A scheduler's job is to run a function at a (possibly infinite) sequence of times. You are free to generate this sequence
 in whatever way you see fit. There are examples of a few ways below.
 
+```xml
+<dependency>
+    <groupId>dev.mccue</groupId>
+    <artifactId>ding</artifactId>
+    <version>2026.06.23</version>
+</dependency>
+```
+
 ## Run a task every 5 minutes
 
 ```java
