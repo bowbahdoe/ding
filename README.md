@@ -23,7 +23,7 @@ in whatever way you see fit. There are examples of a few ways below.
 import dev.mccue.ding.Schedule;
 
 void main() {
-    Schedule.periodic(Instant.now(), t -> t.plus(Duration.ofMinutes(5)))
+    Schedule.periodic(Instant.now(), Duration.ofMinutes(5))
             .run(t -> IO.println("Hello: " + t));
 }
 ```
@@ -50,7 +50,7 @@ void main() {
 import dev.mccue.ding.Schedule;
 
 void main() throws Exception {
-    var activeSchedule = Schedule.periodic(Instant.now(), t -> t.plus(Duration.ofMinutes(1)))
+    var activeSchedule = Schedule.periodic(Instant.now(), Duration.ofMinutes(1))
             .run(t -> IO.println("Hello: " + t));
     
     IO.readln("Press Enter to Stop: ");
@@ -91,7 +91,7 @@ class Task implements ScheduledTask {
 
 
 void main() {
-    Schedule.periodic(Instant.now(), t -> t.plus(Duration.ofMinutes(5)))
+    Schedule.periodic(Instant.now(), Duration.ofMinutes(5))
             .run(new Task());
 }
 ```
