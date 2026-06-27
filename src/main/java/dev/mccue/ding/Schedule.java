@@ -41,12 +41,21 @@ public final class Schedule {
     }
 
     public Schedule withoutPastTimes() {
-        return withoutPastTimes(Instant.now());
+        return new Schedule(withoutPastTimes(times));
     }
 
     public Schedule withoutPastTimes(Instant now) {
-        return new Schedule(times.dropWhile(time -> time.isBefore(now)));
+        return new Schedule(withoutPastTimes(times, now));
     }
+
+    public static Seq<Instant> withoutPastTimes(Seq<Instant> times) {
+        return withoutPastTimes(times, Instant.now());
+    }
+
+    public static Seq<Instant> withoutPastTimes(Seq<Instant> times, Instant now) {
+        return times.dropWhile(time -> time.isBefore(now));
+    }
+
 
     private static void doClose(
             ScheduledExecutorService pool,
@@ -133,6 +142,38 @@ public final class Schedule {
 
             doClose(pool, promise, task);
         }, promise);
+    }
+
+    public static ActiveSchedule run(
+            Seq<Instant> times,
+            ScheduledTask task
+    ) {
+        return Schedule.of(times).run(task);
+    }
+
+    public static ActiveSchedule run(
+            Seq<Instant> times,
+            ScheduledTask task,
+            ThreadFactory threadFactory
+    ) {
+        return Schedule.of(times).run(task, threadFactory);
+    }
+
+    public static ActiveSchedule run(
+            Seq<Instant> times,
+            ScheduledTask task,
+            InstantSource instantSource
+    ) {
+        return Schedule.of(times).run(task, instantSource);
+    }
+
+    public static ActiveSchedule run(
+            Seq<Instant> times,
+            ScheduledTask task,
+            ThreadFactory threadFactory,
+            InstantSource instantSource
+    ) {
+        return Schedule.of(times).run(task, threadFactory, instantSource);
     }
 
     public static Stream<Instant> merge(
